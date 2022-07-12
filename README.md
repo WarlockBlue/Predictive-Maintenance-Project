@@ -128,14 +128,92 @@ Using pd.get_dummies():
 - H : Type_L = 0, Type_M=0.
 
 Using LabelEncoder(): 
-0 : Heat Dissipation Failure
-1 : No Failure
-2 : Overstrain Failure
-3 : Power Failure
-4 : Random Failures
-5 : Tool Wear Failure
+- 0 : Heat Dissipation Failure
+- 1 : No Failure
+- 2 : Overstrain Failure
+- 3 : Power Failure
+- 4 : Random Failures
+- 5 : Tool Wear Failure
 
 ![image](https://user-images.githubusercontent.com/104313804/176329484-ad7d2ed1-db28-430a-b48e-5167ffd69db4.png)
+
+### Dealing with unbalanced data:
+
+Oversampling was implemented using SMOTETomek from imblearn.combine python package.
+This allows us to create synthetic data and balance our data set. 
+It uses K-nearest neighbors algorithm from the SMOTE technique, and removes unnecessary outliers with the Tomek links.
+
+Below we can observe the data before balancing and after balancing was implemented:
+![image](https://user-images.githubusercontent.com/104313804/178612976-62dd56fb-deb2-4235-8a66-6ce3c4928fc0.png)
+
+### Training and Test Values:
+
+Using the train_test_split function from the sklearn.model_selection package we can separate the data into 70% training data and 30% test data.
+We will use the balanced training set to train the model (X_train_res, y_train_res) and the normal set in our test set (X_test, y_test)
+
+### Checking for Outliers:
+In order to verify the presence of outliers in the data, we plot the distribution of each data feature for each failure type. 
+
+![image](https://user-images.githubusercontent.com/104313804/178613157-0291891b-5f5e-4544-8ddd-41fa5127f25f.png)
+![image](https://user-images.githubusercontent.com/104313804/178613169-7f6f48ce-e2c3-4dd8-81ab-48c883e8c139.png)
+![image](https://user-images.githubusercontent.com/104313804/178613186-ae84b6d6-7f50-48ff-8fda-cf00ce1e285e.png)
+![image](https://user-images.githubusercontent.com/104313804/178613205-3820b44a-6664-472f-ab01-38870d8466fb.png)
+![image](https://user-images.githubusercontent.com/104313804/178613218-92a50bd7-a0e1-4358-aec1-98c707a89051.png)
+
+As seen above, there is a strong presence of outliers in the data, which means that we will need to use scaling techniques that take care of this for us.
+For this project I will be using RobustScaling when scaling the data.
+
+## Machine Learning Models: 
+
+In this project I will use 3 machine learning non-linear classifiers and determine which produce the best results for our predictive maintenance scenario. We will utilize:
+- K-Nearest Neighbors (KNN) Classifier.
+- Decision Tree Classifier.
+- XGBoost Classifier.
+It is important to note that there are a lot of different models that we could try for the data and in order to hone the scope of this project I will be focusing on these three types.
+
+### Machine Learning Model Application: 
+
+In order to train each machine learning model we used the balanced training set. This is done in order to ensure there is enough data to train the data set in all the failure types shown in the failure data.
+In order to test each machine learning model we used the unbalanced test set. This is to ensure that the models are being tested with representative data to real life scenario. In real life data collection, the trend of unbalanced data will be present.
+
+- Training Data: X_train_res, y_train_res.
+- Test Data: X_test, y_test.
+Using scaled and unscaled data, obtained: 
+- Accuracy Score.
+- 5-fold Cross Validation.
+- Classification report
+
+### Observations: 
+
+![image](https://user-images.githubusercontent.com/104313804/178614266-36ca432c-f497-41b8-b5b5-60f6ec0d13ce.png)
+![image](https://user-images.githubusercontent.com/104313804/178614277-2816dcc4-fa86-4916-a2e9-e4abd5196e45.png)
+
+As shown in the graphs abov:
+- When using KNN Classifier, using scaled data to train the model, proves to have a greater accuracy score.
+- Accuracy is the same for unscaled and scaled data when using the Decision Tree and the XGBoost Classifiers, this is due to the fact unscaled data does not affec the performance of these more powerful models.
+- 5-fold Cross-validation show to develop high accuracy for all models with very neglegible difference in score, proving the advantages of using k-fold cross-validation to create more accurate models.
+
+# Model Selection:
+
+As shown below, XGBoost model performed the best between all three models under the default parameter conditions of each model.
+Since we are dealing with unbalanced data, we need to understand that the accuracy score is not the best parameter to select the model, since it is skewed towards the higher quantity data, in this case the "No Failure" failure type. Because of this I compared the precision of each model for each failure type, and the model and conditions with the best overall score was selected as the best for a predictive maintenance system, in this case XGBoost.
+
+Future Considerations: 
+- Parameter Tuning.
+- Using GridSearchCV.
+
+![image](https://user-images.githubusercontent.com/104313804/178614908-fa5b4bed-a95a-408e-bf8d-28b259159136.png)
+![image](https://user-images.githubusercontent.com/104313804/178614917-b409fc6e-5be4-492d-8d0a-caec4a931406.png)
+![image](https://user-images.githubusercontent.com/104313804/178614921-beaca5a5-c758-42ed-a88c-928cfc165ca4.png)
+
+
+
+
+
+
+
+
+
 
 
 
