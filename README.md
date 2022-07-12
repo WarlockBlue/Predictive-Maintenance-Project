@@ -154,11 +154,12 @@ We will use the balanced training set to train the model (X_train_res, y_train_r
 ### Checking for Outliers:
 In order to verify the presence of outliers in the data, we plot the distribution of each data feature for each failure type. 
 
-![image](https://user-images.githubusercontent.com/104313804/178613157-0291891b-5f5e-4544-8ddd-41fa5127f25f.png)
-![image](https://user-images.githubusercontent.com/104313804/178613169-7f6f48ce-e2c3-4dd8-81ab-48c883e8c139.png)
-![image](https://user-images.githubusercontent.com/104313804/178613186-ae84b6d6-7f50-48ff-8fda-cf00ce1e285e.png)
-![image](https://user-images.githubusercontent.com/104313804/178613205-3820b44a-6664-472f-ab01-38870d8466fb.png)
-![image](https://user-images.githubusercontent.com/104313804/178613218-92a50bd7-a0e1-4358-aec1-98c707a89051.png)
+![image](https://user-images.githubusercontent.com/104313804/178616165-6252bc45-5230-45d0-9994-b4d18fc77a30.png)
+![image](https://user-images.githubusercontent.com/104313804/178616195-aabe3981-fae9-4462-9728-9dab1159ec6c.png)
+![image](https://user-images.githubusercontent.com/104313804/178616208-1a010c29-7f3a-4f9a-9028-01afea6af672.png)
+![image](https://user-images.githubusercontent.com/104313804/178616215-0a63c8fc-2dbb-44e8-8ac0-0c117b4d793a.png)
+![image](https://user-images.githubusercontent.com/104313804/178616226-89fd7733-ec06-43e5-946a-4a16df28a5cd.png)
+
 
 As seen above, there is a strong presence of outliers in the data, which means that we will need to use scaling techniques that take care of this for us.
 For this project I will be using RobustScaling when scaling the data.
@@ -185,8 +186,9 @@ Using scaled and unscaled data, obtained:
 
 ### Observations: 
 
-![image](https://user-images.githubusercontent.com/104313804/178614266-36ca432c-f497-41b8-b5b5-60f6ec0d13ce.png)
-![image](https://user-images.githubusercontent.com/104313804/178614277-2816dcc4-fa86-4916-a2e9-e4abd5196e45.png)
+![image](https://user-images.githubusercontent.com/104313804/178616265-1a962b97-ce7f-4791-8d4a-81580c59c740.png)
+![image](https://user-images.githubusercontent.com/104313804/178616275-a7f5871d-7469-4623-8fa1-99496a485d19.png)
+
 
 As shown in the graphs abov:
 - When using KNN Classifier, using scaled data to train the model, proves to have a greater accuracy score.
@@ -202,9 +204,10 @@ Future Considerations:
 - Parameter Tuning.
 - Using GridSearchCV.
 
-![image](https://user-images.githubusercontent.com/104313804/178614908-fa5b4bed-a95a-408e-bf8d-28b259159136.png)
-![image](https://user-images.githubusercontent.com/104313804/178614917-b409fc6e-5be4-492d-8d0a-caec4a931406.png)
-![image](https://user-images.githubusercontent.com/104313804/178614921-beaca5a5-c758-42ed-a88c-928cfc165ca4.png)
+![image](https://user-images.githubusercontent.com/104313804/178616309-87a8eff7-702e-428f-a05c-f6d326e0db12.png)
+![image](https://user-images.githubusercontent.com/104313804/178616335-4765092f-e8b2-4dd3-b7fb-4b8fc22a35ab.png)
+![image](https://user-images.githubusercontent.com/104313804/178616352-6a37afd7-1879-4e55-9d86-000accbf4368.png)
+
 
 
 
